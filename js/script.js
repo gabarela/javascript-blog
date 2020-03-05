@@ -102,7 +102,7 @@ function generateTitleLinks() {
 
 generateTitleLinks();
 
-function generateTags(){
+function generateTags() {
 
   /* find all articles */
 
@@ -110,11 +110,11 @@ function generateTags(){
 
   /* START LOOP: for every article: */
 
-for (let article of articles) {
+  for (let article of articles) {
 
     /* find tags wrapper */
 
-const tagWrapper = article.querySelector(optArticleTagsSelector);
+    const tagWrapper = article.querySelector(optArticleTagsSelector);
 
     /* make html variable with empty string */
 
@@ -130,22 +130,24 @@ const tagWrapper = article.querySelector(optArticleTagsSelector);
     const articleTagsArray = articleTags.split(' ');
 
     /* START LOOP: for each tag */
-for(let tag of articleTagsArray) {
+    for (let tag of articleTagsArray) {
       /* generate HTML of the link */
 
 
-      const linkHTML = '<li><a href="#'+ articleTags + ' ">' + articleTagsArray + '</a></li>';
+      const linkHTML = '<li><a href="#' + articleTags + ' ">' + articleTagsArray + '</a></li>'; /*coś tu jest nie tak z podłaczeniem linków - chyba poknociłam zapis. "Generowanie linków w art"*/
       console.log(linkHTML);
       /* add generated code to html variable */
-      let html = linkHTML;
       html = html + linkHTML;
-}
-    /* END LOOP: for each tag */
+      /* END LOOP: for each tag */
+
+    }
+
+
 
     /* insert HTML of all the links into the tags wrapper */
+    tagWrapper.innerHTML = linkHTML;
+    /* END LOOP: for every article: */
+  }
 
-  /* END LOOP: for every article: */
-}
-
-generateTags();
+  generateTags();
 }
