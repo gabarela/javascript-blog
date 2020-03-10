@@ -1,22 +1,22 @@
 'use strict';
 
-function titleClickHandler(event) {
+function titleClickHandler(event) { /*f wykonywana w reakcji na event*/
   event.preventDefault();
   const clickedElement = this;
   console.log('Link was clicked!');
 
   /* [DONE] remove class 'active' from all article links */
 
-  const activeLinks = document.querySelectorAll('.titles a.active');
+  const activeLinks = document.querySelectorAll('.titles a.active'); /*stała activeLinks to wszystkie elementy pasujace do selektora '.titles a.active' wewnątrz documentu*/
 
-  for (let activeLink of activeLinks) {
-    activeLink.classList.remove('active');
-  }
+  for (let activeLink of activeLinks) { /*zaczynamy pętlę for która dla kolejnych pojedynczych elementów czyli zmiennej activeLink spośród kolekcji elementów activeLinks zrobi to co zostanie opisane w nawiasie klamrowym*/
+    activeLink.classList.remove('active'); /*pojedynczy link spośród wyszukanych posiada swoja bibliotekę classList zawierajacą informacje i funkcje na temat jego klas i z niej usunieta zostanie klasa active*/
+  } /*pętla zamknięta czyli działanie wykonane dla wszystkich*/
 
   /* [DONE] add class 'active' to the clicked link */
 
 
-  clickedElement.classList.add('active');
+  clickedElement.classList.add('active'); /* kliknięty element uzyska teraz klasę active*/
   /*console.log('clickedElement:', clickedElement);*/
 
   /* [DONE] remove class 'active' from all articles */
@@ -29,17 +29,17 @@ function titleClickHandler(event) {
 
   /* [DONE] get 'href' attribute from the clicked link */
 
-  const articleSelector = clickedElement.getAttribute('href');
+  const articleSelector = clickedElement.getAttribute('href'); /*w stałej articleSelector zapisujemy wartość atrybutu href klikniętego elementu*/
   console.log(articleSelector);
 
   /* [DONE] find the correct article using selector (value of 'href' attribute) */
 
-  const targetArticle = document.querySelector(articleSelector);
+  const targetArticle = document.querySelector(articleSelector); /*stała targetArticle wynajdzie wewnątrz dokumentu pierwszy element pasujący do selektora articleSelector czyli ten kliknięty*/
   console.log(targetArticle);
 
   /* add class 'active' to the correct article */
 
-  targetArticle.classList.add('active');
+  targetArticle.classList.add('active'); /*i nada mu klasę active - doda ja do "biblioteki" classList*/
   console.log('targetArticle:', targetArticle);
 
 }
@@ -128,13 +128,15 @@ function generateTags() {
     /* split tags into array */
 
     const articleTagsArray = articleTags.split(' ');
+    console.log(articleTagsArray);
 
     /* START LOOP: for each tag */
     for (let tag of articleTagsArray) {
       /* generate HTML of the link */
 
 
-      const linkHTML = '<li><a href="#' + articleTags + ' ">' + articleTagsArray + '</a></li>'; /*coś tu jest nie tak z podłaczeniem linków - chyba poknociłam zapis. "Generowanie linków w art"*/
+      const linkHTML = '<li><a href="#' + articleTags + '"><span>' + articleTagsArray + '</span></a></li>';
+
       console.log(linkHTML);
       /* add generated code to html variable */
       html = html + linkHTML;
@@ -145,7 +147,7 @@ function generateTags() {
 
 
     /* insert HTML of all the links into the tags wrapper */
-    tagWrapper.innerHTML = linkHTML;
+    tagWrapper.innerHTML = html;
     /* END LOOP: for every article: */
   }
 
