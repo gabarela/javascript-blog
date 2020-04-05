@@ -44,6 +44,7 @@ const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list';
+  optArticleAuthorSelector = '.post-author';
 
 function generateTitleLinks(customSelector = ''){
 
@@ -184,3 +185,52 @@ function addClickListenersToTags() {
 }
 
 addClickListenersToTags();
+
+/* funkcja generateAuthors na podstawie generateTags */
+
+function generateAuthors() {
+
+  /* find all articles */
+  const articles = document.querySelectorAll(optArticleSelector);
+
+  /* START LOOP: for every article: */
+  for (let article of articles) {
+
+    /* find author wrapper */
+    const authorWrapper = article.querySelector(optArticleAuthorSelector);
+
+    /* make html variable with empty string */
+    let html = '';
+
+    /* get author from data-author attribute */
+    const articleAuthor = article.getAttribute('data-author');
+    console.log(articleAuthor);
+
+
+    /* generate HTML of the link */
+    const linkHTML = '<li><a href="#' + articleAuthor + '"><span>' + articleAuthor + '</span> </a></li>'; /* TU COS JEST NIE TAK...??? */
+    console.log(linkHTML);
+
+    /* add generated code to html variable */
+    html = html + linkHTML;
+
+    /* insert HTML of all the links into the author wrapper */
+    authorWrapper.innerHTML = html;
+    /* END LOOP: for every article: */
+  }
+}
+generateAuthors();
+
+function addClickListenersToAuthors() {
+  /* find all links to authors */
+  const authorLinks = document.querySelectorAll('.post-author a');
+
+  /* START LOOP: for each link - CZY TO JEST POTRZEBNE?? */
+  for (let authorLink of authorLinks) {
+    /* add tagClickHandler as event listener for that link */
+    authorLink.addEventListener('click', tagClickHandler);
+    /* END LOOP: for each link */
+  }
+}
+
+addClickListenersToAuthors();
