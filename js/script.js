@@ -117,7 +117,7 @@ function generateTags() {
     for (let tag of articleTagsArray) {
 
       /* generate HTML of the link */
-      const linkHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span> </a></li>';
+      const linkHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span> </a></li>'+ ' ';
       console.log(linkHTML);
 
       /* add generated code to html variable */
@@ -200,7 +200,7 @@ function generateAuthors() {
     const authorWrapper = article.querySelector(optArticleAuthorSelector);
 
     /* make html variable with empty string */
-    let html = '';
+    let html = 'by ';
 
     /* get author from data-author attribute */
     const articleAuthor = article.getAttribute('data-author');
@@ -208,7 +208,7 @@ function generateAuthors() {
 
 
     /* generate HTML of the link */
-    const linkHTML = '<a href="#author-' + articleAuthor + '"><span>' + articleAuthor + '</span> </a></li>';
+    const linkHTML = '<a href="#author-' + articleAuthor + '"><span>' + articleAuthor + '</span> </a>';
     console.log(linkHTML);
 
     /* add generated code to html variable */
