@@ -109,8 +109,9 @@ body {
 }
 
 /* Tags */
-.list.tags ul {
+.list.tags li {
   display: inline-block;
+  padding: 0 10px 10px 0;
 }
 
 .tag-size-1 {

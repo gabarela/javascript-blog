@@ -1,5 +1,15 @@
 'use strict';
 
+const optArticleSelector = '.post',
+  optTitleSelector = '.post-title',
+  optTitleListSelector = '.titles',
+  optArticleTagsSelector = '.post-tags .list',
+  optArticleAuthorSelector = '.post-author',
+  optTagsListSelector = '.tags.list',
+  optCloudClassCount = '5',
+  optCloudClassPrefix = 'tag-size-';
+
+// WYŚWIETLANIE KLIKNIĘTEGO ARTYKUŁU - DZIAŁA
 function titleClickHandler(event) {
 
   event.preventDefault();
@@ -39,15 +49,7 @@ function titleClickHandler(event) {
 
 }
 
-
-const optArticleSelector = '.post',
-  optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles',
-  optArticleTagsSelector = '.post-tags .list',
-  optArticleAuthorSelector = '.post-author',
-  optTagsListSelector = '.tags.list',
-  optCloudClassCount = '5',
-  optCloudClassPrefix = 'tag-size-';
+// WYŚWIETLANIE LISTY ARTYKUŁÓW  - DZIAŁA
 
 function generateTitleLinks(customSelector = '') {
 
@@ -61,7 +63,6 @@ function generateTitleLinks(customSelector = '') {
   let html = '';
 
   for (let article of articles) {
-
 
     /* get the article id */
     const articleId = article.getAttribute('id');
@@ -94,7 +95,7 @@ function generateTitleLinks(customSelector = '') {
 
 generateTitleLinks();
 
-
+// WYŚWIETLANIE TAGÓW POD ARTYKUŁEM - DZIAŁA ALE NIE FILTRUJE LISTY ARTYKUŁÓW
 
 function generateTags() {
 
@@ -191,7 +192,7 @@ function addClickListenersToTags() {
 
 addClickListenersToTags();
 
-/* funkcja generateAuthors na podstawie generateTags */
+// WYSWIETLANIE AUTORÓW ARTYKUŁÓW - DZIAŁA I FILTRUJE LISTE ARTYKUŁÓW
 
 function generateAuthors() {
 
@@ -279,6 +280,7 @@ function addClickListenersToAuthors() {
 
 addClickListenersToAuthors();
 
+// NADANIE TAGOWI W PRAWYM SIDEBARZE PARAMETRU NA PODSTAWIE LICZBY WYSTĄPIEŃ
 
 function calculateTagsParams(tags) {
   const params = {
@@ -299,14 +301,18 @@ function calculateTagsParams(tags) {
   return params;
 }
 
+// WYKORZYSTANIE PARAMETRU D NADANIA TAGOWI KLASY ODPOWIADAJĄCEJ ZA ROZMIAR
+
 function calculateTagClass(count, params) {
   const normalizedCount = count - params.min;
   const normalizedMax = params.max - params.min;
   const precentage = normalizedCount / normalizedMax;
-  const classNumber = Math.floor( precentage * (optCloudClassCount - 1) + 1);
+  const classNumber = Math.floor(precentage * (optCloudClassCount - 1) + 1);
   const classValue = optCloudClassPrefix + classNumber;
   return classValue;
 }
+
+// WYGENEROWNIE TAGÓW W PRAWYM SIDEBARZE Z WYKORZYSTANIEM ODPOWIEDNIEGO PARAMETRU & KLASY
 
 function generateTags() {
   /* [NEW] create a new variable allTags with an empty object */
@@ -368,7 +374,7 @@ function generateTags() {
   for (let tag in allTags) {
 
     /* [NEW] generate code of a link and add it to allTagsHTML */
-    const tagLinkHTML = '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + ' (' + tag + ')</a></li>';
+    const tagLinkHTML = '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + '</a></li>';
     console.log('tagLinkHTML:', tagLinkHTML);
 
     allTagsHTML += tagLinkHTML;
