@@ -4,6 +4,7 @@ const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
+  optTagsLinkSelector = '.post-tags .list a, .list.tags a',
   optArticleAuthorSelector = '.post-author',
   optTagsListSelector = '.tags.list',
   optCloudClassCount = '5',
@@ -245,7 +246,7 @@ function tagClickHandler(event) {
 
 function addClickListenersToTags() {
   /* find all links to tags */
-  const tagLinks = document.querySelectorAll('.post-tags .list a');
+  const tagLinks = document.querySelectorAll(optTagsLinkSelector);
 
   /* START LOOP: for each link */
   for (let tagLink of tagLinks) {
