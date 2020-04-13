@@ -1,13 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Oswald:400,600|Sacramento|Source+Sans+Pro:300&subset=latin-ext');
+/*@import url('https://fonts.googleapis.com/css?family=Oswald:400,600|Sacramento|Source+Sans+Pro:300&subset=latin-ext');
 
 /* Variables */
 
-$color-light: #fff;
-$color-dark: #444;
+$color-light: #cfeff1;
+$color-dark: #2a3166;
 
-$font-logo: 'Sacramento', cursive;
+$font-logo: 'Press Start 2P', cursive;
 $font-header: 'Oswald', sans-serif;
 $font-text: 'Source Sans Pro', sans-serif;
+
 
 /* Global */
 
@@ -69,9 +70,10 @@ body {
 .logo {
   font-family: $font-logo;
   font-weight: 400;
-  font-size: 104px;
+  font-size: 80px;
   line-height: 1;
   text-align: center;
+  color: #f29e9e;
 }
 
 /* Lists */
