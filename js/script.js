@@ -89,7 +89,10 @@ function generateTitleLinks(customSelector = '') {
     /*const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
     console.log(linkHTML);*/
 
-    const linkHTMLData = {id: articleId, title: articleTitle};
+    const linkHTMLData = {
+      id: articleId,
+      title: articleTitle
+    };
     const linkHTML = templates.articleLink(linkHTMLData);
 
 
@@ -174,7 +177,10 @@ function generateTags() {
       /* generate HTML of the link */
       /*const linkHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span> </a></li>' + ' ';*/
 
-      const linkHTMLData = {id: tag, tagName: tag};
+      const linkHTMLData = {
+        id: tag,
+        tagName: tag
+      };
       const linkHTML = templates.tagLink(linkHTMLData);
 
       /* add generated code to html variable */
@@ -204,7 +210,9 @@ function generateTags() {
 
   /* [NEW] create variable for all links HTML code */
   // let allTagsHTML = ' ';
-  const allTagsData = {tags: []};
+  const allTagsData = {
+    tags: []
+  };
 
   /* [NEW] START LOOP: for each tag in allTags */
   for (let tag in allTags) {
@@ -215,10 +223,10 @@ function generateTags() {
 
     // allTagsHTML += tagLinkHTML
     allTagsData.tags.push({
-                    tag: tag,
-                    count: allTags[tag],
-                    className: calculateTagClass(allTags[tag], tagsParams)
-                    });
+      tag: tag,
+      count: allTags[tag],
+      className: calculateTagClass(allTags[tag], tagsParams)
+    });
 
   }
   /* [NEW] end loop for each tag in allTags */
@@ -301,7 +309,10 @@ function generateAuthors() {
 
     /*const linkHTML = '<a href="#author-' + author + '"><span>' + author + '</span> </a>';*/
 
-    const linkHTMLData = {id: author, authorName: author};
+    const linkHTMLData = {
+      id: author,
+      authorName: author
+    };
     const linkHTML = templates.authorLink(linkHTMLData);
 
     html = html + linkHTML;
@@ -317,7 +328,9 @@ function generateAuthors() {
   }
 
   // let allAuthorsHTML = ' ';
-  const allAuthorsData = { authors: []};
+  const allAuthorsData = {
+    authors: []
+  };
 
   for (let author in allAuthors) {
 
@@ -327,9 +340,9 @@ function generateAuthors() {
 
     // allAuthorsHTML += authorLinkHTML;
     allAuthorsData.authors.push({
-        authorName: author,
-        authorCount: allAuthors[author]
-        });
+      authorName: author,
+      authorCount: allAuthors[author]
+    });
 
   }
 
