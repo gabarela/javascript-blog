@@ -187,7 +187,7 @@ function generateTags() {
       html = html + linkHTML;
 
       /* [NEW] check if this link is NOT already in allTags */
-      if (!allTags.hasOwnProperty(tag)) {
+      if (!Object.prototype.hasOwnProperty.call(allTags, tag)) {
 
         /* [NEW] add generated code to allTags array */
         allTags[tag] = 1;
@@ -317,7 +317,7 @@ function generateAuthors() {
 
     html = html + linkHTML;
 
-    if (!allAuthors.hasOwnProperty(author)) {
+    if (!Object.prototype.hasOwnProperty.call(allAuthors, author)) {
 
       allAuthors[author] = 1;
     } else {
