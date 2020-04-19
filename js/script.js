@@ -340,6 +340,7 @@ function generateAuthors() {
 
     // allAuthorsHTML += authorLinkHTML;
     allAuthorsData.authors.push({
+      id: author,
       authorName: author,
       authorCount: allAuthors[author]
     });
